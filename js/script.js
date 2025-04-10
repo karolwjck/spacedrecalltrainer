@@ -23,13 +23,11 @@ supabase.auth.getSession().then(({ data: { session } }) => {
 
 async function addQuestion() {
   const question = document.getElementById('question').value;
-  const nextReview = document.getElementById('next_review_date').value;
-  const { data: userData } = await supabase.auth.getUser();
-  const user_id = userData.user.id;
+  const nextReview = document.getElementById('nextReview').value;
 
   const { error } = await supabase
     .from('questions')
-    .insert([{ question, next_review: nextReview, user_id }]);
+    .insert([{ question, next_review_date: nextReview }]);
 
   if (error) return alert('Error: ' + error.message);
 
@@ -47,7 +45,7 @@ async function fetchQuestions() {
 
   if (error) return alert('Fetch error: ' + error.message);
 
-  const list = document.getElementById('question');
+  const list = document.getElementById('questionList');
   list.innerHTML = '';
   data.forEach(q => {
     const li = document.createElement('li');
