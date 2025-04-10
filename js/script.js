@@ -35,6 +35,23 @@ async function addQuestion() {
   fetchQuestions();
 }
 
+async function markAsReviewed(questionId) {
+  const newDate = prompt("Enter next review date (YYYY-MM-DD):");
+  if (!newDate) return;
+
+  const { error } = await client
+    .from('questions')
+    .update({ next_review_date: newDate })
+    .eq('id', questionId);
+
+  if (error) {
+    alert("Error updating: " + error.message);
+    return;
+  }
+
+  fetchQuestions(); // Refresh the list
+}
+
 async function fetchQuestions() {
   const today = new Date().toISOString();
 
@@ -49,7 +66,10 @@ async function fetchQuestions() {
   list.innerHTML = '';
   data.forEach(q => {
     const li = document.createElement('li');
-    li.textContent = q.question;
+    li.innerHTML = `
+      ${q.question}
+      <button onclick="markAsReviewed('${q.id}')">✅</button>
+    `;
     list.appendChild(li);
   });
 }
