@@ -39,7 +39,7 @@ async function markAsReviewed(questionId) {
   const newDate = prompt("Enter next review date (YYYY-MM-DD):");
   if (!newDate) return;
 
-  const { error } = await client
+  const { error } = await supabase_client
     .from('questions')
     .update({ next_review_date: newDate })
     .eq('id', questionId);
