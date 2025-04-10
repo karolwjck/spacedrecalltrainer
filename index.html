@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spaced Recall Trainer</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Spaced Recall Trainer</h1>
+
+    <section id="auth">
+      <button onclick="loginWithGitHub()">Login with GitHub</button>
+    </section>
+
+    <section id="app" style="display:none;">
+      <h2>Welcome!</h2>
+      <textarea id="question" placeholder="Enter your question here..."></textarea>
+      <input id="nextReview" type="date" />
+      <button onclick="addQuestion()">Add Question</button>
+
+      <h3>Questions Due Today</h3>
+      <ul id="questionList"></ul>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
