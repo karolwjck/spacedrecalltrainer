@@ -5,7 +5,7 @@ A simple app that helps you practice spaced repetition by reviewing questions yo
 ---
 
 🚀 Live Demo
-👉 https://karolwjck.github.io/spaced-recall-trainer/
+👉 https://karolwjck.github.io/spacedrecalltrainer/
 
 ---
 
